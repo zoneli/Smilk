@@ -21,6 +21,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self createTableView];    
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.titleLabel.text = @"";
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.titleLabel.text = @"我的";
+}
+
 - (void)createTableView {
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,self.view.frame.size.height) style:UITableViewStylePlain];
     self.mainTableView.delegate = self;
@@ -44,7 +56,7 @@
     headerLabel.backgroundColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headerLabel.textColor = [UIColor blackColor];
-    headerLabel.text = @"我的信息";
+    headerLabel.text = @"😯我的信息";
     [headerView addSubview:headerLabel];
     return headerView;
 }

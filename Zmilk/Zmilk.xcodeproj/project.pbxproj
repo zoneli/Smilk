@@ -10,6 +10,7 @@
 		B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E0B0024E8D0AC003519D6 /* EditViewController.m */; };
 		B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12DF24E90731003519D6 /* RingsDataCache.m */; };
 		B05E12E224E917EE003519D6 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12E124E917EE003519D6 /* FourthViewController.m */; };
+		B05E12E524E93528003519D6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12E424E93528003519D6 /* RootViewController.m */; };
 		B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D4FE24E8B4C300900A01 /* AppDelegate.m */; };
 		B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D50124E8B4C300900A01 /* SceneDelegate.m */; };
 		B084D50B24E8B4C300900A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B084D50924E8B4C300900A01 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		B05E12DE24E90731003519D6 /* RingsDataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingsDataCache.h; sourceTree = "<group>"; };
 		B05E12DF24E90731003519D6 /* RingsDataCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingsDataCache.m; sourceTree = "<group>"; };
 		B05E12E124E917EE003519D6 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		B05E12E324E93528003519D6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		B05E12E424E93528003519D6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		B084D4FA24E8B4C300900A01 /* Zmilk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmilk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B084D4FD24E8B4C300900A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B084D4FE24E8B4C300900A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				B084D52724E8B99200900A01 /* SecondViewController.m */,
 				B084D52324E8B99200900A01 /* FourthViewController.h */,
 				B05E12E124E917EE003519D6 /* FourthViewController.m */,
+				B05E12E324E93528003519D6 /* RootViewController.h */,
+				B05E12E424E93528003519D6 /* RootViewController.m */,
 			);
 			path = rootViewController;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */,
 				B084D51324E8B4C400900A01 /* main.m in Sources */,
 				B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */,
+				B05E12E524E93528003519D6 /* RootViewController.m in Sources */,
 				B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */,
 				B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */,
 				B084D52924E8B99200900A01 /* FirstViewController.m in Sources */,

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
     self.rightBtn.frame = CGRectMake(0, 0, 30, 30);
     self.rightBtn.center = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, self.navigationController.navigationBar.center.y-20);
@@ -42,12 +42,14 @@
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.titleLabel.text = @"";
     self.rightBtn.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.rightBtn.hidden = NO;
+    self.titleLabel.text = @"吃药列表";
     [self getCacheData];
 }
 //获取缓存列表

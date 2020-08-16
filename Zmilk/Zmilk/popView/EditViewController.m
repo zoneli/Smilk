@@ -103,7 +103,10 @@
 }
 
 - (void)tapCancel {
-    [self.view endEditing:YES];    
+    [self.view endEditing:YES];
+    if (!self.datePicker.hidden) {
+        self.datePicker.hidden = YES;
+    }
 }
 
 - (void)addBackView {
@@ -116,7 +119,7 @@
 }
 
 - (void)createTableView {
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,self.statubarHeight+44, [UIScreen mainScreen].bounds.size.width,200) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,self.statubarHeight+44, [UIScreen mainScreen].bounds.size.width,110) style:UITableViewStylePlain];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorColor = [UIColor clearColor];

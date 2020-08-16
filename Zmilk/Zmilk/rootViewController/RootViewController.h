@@ -1,5 +1,5 @@
 //
-//  FourthViewController.h
+//  RootViewController.h
 //  Zmilk
 //
 //  Created by lyz on 2020/8/16.
@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FourthViewController : RootViewController
+@interface RootViewController : UIViewController
+
+@property (nonatomic,strong)UILabel *titleLabel;
 
 @end
 

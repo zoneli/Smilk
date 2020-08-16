@@ -15,7 +15,9 @@
 @property (nonatomic,strong)UITableView *mainTableView;
 
 @property (nonatomic,strong)NSMutableArray *cacheDataArray;
+
 @property (nonatomic,strong)UIButton *rightBtn;
+
 @end
 
 @implementation FirstViewController
@@ -23,24 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
     self.rightBtn.frame = CGRectMake(0, 0, 30, 30);
     self.rightBtn.center = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, self.navigationController.navigationBar.center.y);
     [self.rightBtn addTarget:self action:@selector(rightBtnPress) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:self.rightBtn];
-    
     [self createTableView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.rightBtn.hidden = YES;
+    self.titleLabel.text = @"";
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.rightBtn.hidden = NO;
+    self.titleLabel.text = @"喝水列表";
     [self getCacheData];
 }
 
