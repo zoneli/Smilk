@@ -17,10 +17,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UIUserNotificationType types = UIUserNotificationTypeAlert |
+    UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
     return YES;
 }
 
-
+#pragma mark 接收本地通知时触发
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSDictionary *userInfo=notification.userInfo;
+    NSLog(@"didReceiveLocalNotification:The userInfo is %@",userInfo);
+}
+- (void)application:(UIApplication *) application didRegisterUserNotificationSettings:(UIUserNotificationSettings   *)notificationSettings {
+     if (notificationSettings.types != UIUserNotificationTypeNone) {
+    }
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+}
 #pragma mark - UISceneSession lifecycle
 
 

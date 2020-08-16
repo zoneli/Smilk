@@ -91,7 +91,7 @@
         <scene sceneID="nea-Dg-RHy">
             <objects>
                 <viewController id="E1b-5R-mJo" customClass="FourthViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XxO-J8-aBx">
+                    <view key="view" contentMode="scaleToFill" id="XxO-J8-aBx" customClass="fo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -16,10 +16,14 @@
 
 - (void)saveCacheData:(NSDictionary *)dic;
 
+- (void)deleteCache:(NSDictionary *)dic;
+
 - (NSArray *)getMedicineCacheArray;
 
 - (void)saveMedicineCacheData:(NSDictionary *)dic;
 
+- (void)deleteMedicneCache:(NSDictionary *)dic;
+ 
 @end
 
 

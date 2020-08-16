@@ -35,15 +35,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.statubarHeight = 0;
-    self.rightBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    self.rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    self.rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.rightBtn setTitle:@"保存" forState:UIControlStateNormal];
+    self.rightBtn.titleLabel.textColor = [UIColor blackColor];
+    self.rightBtn.frame = CGRectMake(0, 0, 50, 30);
     self.rightBtn.center = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, self.navigationController.navigationBar.center.y-20);
-  
+    
     [self.rightBtn addTarget:self action:@selector(rightBtnPress) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:self.rightBtn];
     [self createTableView];
     [self addBackView];
-    [self setupDateKeyPan];
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -56,24 +57,51 @@
     self.rightBtn.hidden = NO;
 }
 - (void)rightBtnPress {
-    if (self.timeStr.length>0 && self.nameStr.length>0 && self.infoStr.length>0  && self.datePicker.date) {
-        //保存数据
-           NSDictionary *dic = @{
-               @"time":self.timeStr,
-               @"name":self.nameStr,
-               @"des":self.infoStr,
-               @"timeFormat":self.datePicker.date,
-           };
-           RingsDataCache *cachedata = [[RingsDataCache alloc] init];
-           [cachedata saveCacheData:dic];
-           UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
-           UIAlertAction *sexMan = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-               [self.navigationController popViewControllerAnimated:YES];
+    if (self.isMedicine) {
+        if (self.timeStr.length>0 && self.nameStr.length>0  && self.datePicker.date) {
+            NSDate *date2 = [self.datePicker.date dateByAddingTimeInterval:8 * 60 * 60];
+            //保存数据
+            NSDictionary *dic = @{
+                @"time":self.timeStr,
+                @"name":self.nameStr,
+                @"timeFormat":date2,
+            };
+            RingsDataCache *cachedata = [[RingsDataCache alloc] init];
+            [cachedata saveMedicineCacheData:dic];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sexMan = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
             }];
-           [alert addAction:sexMan];
-           [self presentViewController:alert animated:YES completion:nil];
+            [alert addAction:sexMan];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }else {
+        if (self.timeStr.length>0 && self.nameStr.length>0 && self.datePicker.date) {
+            NSDate *date2 = [self.datePicker.date dateByAddingTimeInterval:8 * 60 * 60];
+            //保存数据
+            NSDictionary *dic = @{
+                @"time":self.timeStr,
+                @"name":self.nameStr,
+                @"timeFormat":date2,
+            };
+            RingsDataCache *cachedata = [[RingsDataCache alloc] init];
+            [cachedata saveCacheData:dic];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sexMan = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alert addAction:sexMan];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }
+    //增加本地通知
+    [self addLocationNotice];
+    
+}
 
+- (void)addLocationNotice {
+    
+    
 }
 
 - (void)tapCancel {
@@ -108,13 +136,13 @@
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     // 设置当前显示时间
     [datePicker setDate:[NSDate date] animated:YES];
+    [datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
     // 设置显示最大时间（此处为当前时间）
     [datePicker setMaximumDate: [NSDate dateWithTimeIntervalSinceNow:72 * 60 * 60]];
     //设置时间格式
     //监听DataPicker的滚动
     [datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
     self.datePicker = datePicker;
-    self.datePicker.hidden = YES;
     self.datePicker.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.datePicker];
     //设置时间输入框的键盘框样式为时间选择器
@@ -134,7 +162,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 2;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 45;
@@ -199,7 +227,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
     if (indexPath.row == 1) {
-        self.datePicker.hidden = !self.datePicker.hidden;
+        if (!self.datePicker) {
+            [self setupDateKeyPan];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+             //设置时间格式
+             formatter.dateFormat = @"MM月dd日hh时mm分";
+             NSString *dateStr = [formatter  stringFromDate:[NSDate date]];
+             UITableViewCell *cell = [self.mainTableView cellForRowAtIndexPath:indexPath];
+             UILabel *label = [cell.contentView viewWithTag:1003];
+             label.text = dateStr;
+             self.timeStr = dateStr;
+        }else {
+            self.datePicker.hidden = !self.datePicker.hidden;
+        }
+        
     }else {
         self.datePicker.hidden = YES;
     }

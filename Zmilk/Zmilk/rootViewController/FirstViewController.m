@@ -31,7 +31,6 @@
     [self.navigationController.navigationBar addSubview:self.rightBtn];
     
     [self createTableView];
-    [self getCacheData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -42,6 +41,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.rightBtn.hidden = NO;
+    [self getCacheData];
 }
 
 - (void)rightBtnPress {
@@ -53,7 +53,7 @@
 - (void)getCacheData {
     RingsDataCache *cache = [[RingsDataCache alloc] init];
     self.cacheDataArray = [cache getCacheArray];
-    
+    [self.mainTableView reloadData];
 }
 
 - (void)createTableView {
@@ -71,16 +71,11 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     headerView.backgroundColor = [UIColor whiteColor];
-
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,59.5,self.view.frame.size.width, 0.5)];
     lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [headerView addSubview:lineView];
-    if (section == 0) {
-        lineView.hidden = YES;
-    }else{
-        lineView.hidden = NO;
-    }
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150, 55)];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150, 54)];
     headerLabel.backgroundColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headerLabel.textColor = [UIColor blackColor];
@@ -99,7 +94,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.cacheDataArray.count>0?self.cacheDataArray.count:10;
+    return self.cacheDataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 45;
@@ -111,7 +106,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,44.5,self.view.frame.size.width, 0.5)];
         lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         [cell.contentView addSubview:lineView];
         
@@ -128,7 +123,6 @@
         timeLabel.tag = 1003;
         [cell.contentView addSubview:timeLabel];
 
-
     }
     NSDictionary *dic = [self.cacheDataArray objectAtIndex:indexPath.row];
     UILabel *infoLabel = [cell.contentView viewWithTag:1001];
@@ -139,10 +133,7 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor whiteColor];
-    vc.title = @"111";
-    [self.navigationController pushViewController:vc animated:YES];
+   
     
 }
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath{
@@ -153,9 +144,10 @@
 
 //执行删除操作
 - (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
-
-    NSLog(@"删除删除删除删除删除删除删除删除删除");
-
+    NSDictionary *dic = [self.cacheDataArray objectAtIndex:indexPath.row];
+    RingsDataCache *cache = [[RingsDataCache alloc] init];
+    [cache deleteCache:dic];
+    [self getCacheData];
 }
 
 //侧滑出现的文字

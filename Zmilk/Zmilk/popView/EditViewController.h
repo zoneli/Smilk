@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EditViewController : UIViewController
 
+@property (nonatomic,assign)BOOL isMedicine;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -33,36 +33,32 @@
 #pragma mark uitableviewdelegate
 //自定义section的头部
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
+
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,59.5,self.view.frame.size.width, 0.5)];
     lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [headerView addSubview:lineView];
-    if (section == 0) {
-        lineView.hidden = YES;
-    }else{
-        lineView.hidden = NO;
-    }
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 150, 60)];
-    headerLabel.backgroundColor = [UIColor clearColor];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150, 54)];
+    headerLabel.backgroundColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headerLabel.textColor = [UIColor blackColor];
-    headerLabel.text = @"1111";
+    headerLabel.text = @"我的信息";
     [headerView addSubview:headerLabel];
-    
     return headerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
+
     return 60;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.cacheDataArray.count>0?self.cacheDataArray.count:10;
+    return 2;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 45;
@@ -74,9 +70,22 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,44.5,self.view.frame.size.width, 0.5)];
         lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         [cell.contentView addSubview:lineView];
+
+        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 100, 25)];
+        infoLabel.backgroundColor = [UIColor clearColor];
+        infoLabel.textColor = [UIColor blackColor];
+        infoLabel.tag = 1001;
+        [cell.contentView addSubview:infoLabel];
+
+    }
+    UILabel *infoLabel = [cell.contentView viewWithTag:1001];
+    if (indexPath.row == 0) {
+        infoLabel.text = @"关于";
+    }else {
+        infoLabel.text = @"关于";
     }
     
     return cell;
@@ -85,29 +94,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIViewController *vc = [[UIViewController alloc] init];
     vc.view.backgroundColor = [UIColor whiteColor];
-    vc.title = @"111";
+    vc.title = @"关于";
     [self.navigationController pushViewController:vc animated:YES];
     
 }
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath{
 
-    return YES;
-
-}
-
-//执行删除操作
-
-- (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
-
-    NSLog(@"删除删除删除删除删除删除删除删除删除");
-
-}
-
-//侧滑出现的文字
-
-- (NSString*)tableView:(UITableView*)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath*)indexPath{
-
-    return@"删除";
+    return NO;
 
 }
 /*

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E0B0024E8D0AC003519D6 /* EditViewController.m */; };
 		B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12DF24E90731003519D6 /* RingsDataCache.m */; };
+		B05E12E224E917EE003519D6 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12E124E917EE003519D6 /* FourthViewController.m */; };
 		B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D4FE24E8B4C300900A01 /* AppDelegate.m */; };
 		B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D50124E8B4C300900A01 /* SceneDelegate.m */; };
 		B084D50B24E8B4C300900A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B084D50924E8B4C300900A01 /* Main.storyboard */; };
@@ -16,9 +17,7 @@
 		B084D51024E8B4C400900A01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B084D50E24E8B4C400900A01 /* LaunchScreen.storyboard */; };
 		B084D51324E8B4C400900A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D51224E8B4C400900A01 /* main.m */; };
 		B084D52924E8B99200900A01 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D52224E8B99200900A01 /* FirstViewController.m */; };
-		B084D52A24E8B99200900A01 /* ThirdViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D52624E8B99200900A01 /* ThirdViewViewController.m */; };
 		B084D52B24E8B99200900A01 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D52724E8B99200900A01 /* SecondViewController.m */; };
-		B084D52C24E8B99200900A01 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D52824E8B99200900A01 /* FourthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +25,7 @@
 		B05E0B0024E8D0AC003519D6 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		B05E12DE24E90731003519D6 /* RingsDataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingsDataCache.h; sourceTree = "<group>"; };
 		B05E12DF24E90731003519D6 /* RingsDataCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingsDataCache.m; sourceTree = "<group>"; };
+		B05E12E124E917EE003519D6 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		B084D4FA24E8B4C300900A01 /* Zmilk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmilk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B084D4FD24E8B4C300900A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B084D4FE24E8B4C300900A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,10 +40,7 @@
 		B084D52224E8B99200900A01 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		B084D52324E8B99200900A01 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
 		B084D52424E8B99200900A01 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		B084D52524E8B99200900A01 /* ThirdViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewViewController.h; sourceTree = "<group>"; };
-		B084D52624E8B99200900A01 /* ThirdViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewViewController.m; sourceTree = "<group>"; };
 		B084D52724E8B99200900A01 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		B084D52824E8B99200900A01 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +114,8 @@
 				B084D52224E8B99200900A01 /* FirstViewController.m */,
 				B084D52124E8B99200900A01 /* SecondViewController.h */,
 				B084D52724E8B99200900A01 /* SecondViewController.m */,
-				B084D52524E8B99200900A01 /* ThirdViewViewController.h */,
-				B084D52624E8B99200900A01 /* ThirdViewViewController.m */,
 				B084D52324E8B99200900A01 /* FourthViewController.h */,
-				B084D52824E8B99200900A01 /* FourthViewController.m */,
+				B05E12E124E917EE003519D6 /* FourthViewController.m */,
 			);
 			path = rootViewController;
 			sourceTree = "<group>";
@@ -195,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05E12E224E917EE003519D6 /* FourthViewController.m in Sources */,
 				B084D52B24E8B99200900A01 /* SecondViewController.m in Sources */,
 				B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */,
 				B084D51324E8B4C400900A01 /* main.m in Sources */,
@@ -202,8 +198,6 @@
 				B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */,
 				B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */,
 				B084D52924E8B99200900A01 /* FirstViewController.m in Sources */,
-				B084D52C24E8B99200900A01 /* FourthViewController.m in Sources */,
-				B084D52A24E8B99200900A01 /* ThirdViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
