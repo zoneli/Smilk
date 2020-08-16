@@ -7,6 +7,7 @@
 //
 
 #import "EditViewController.h"
+#import "RingsDataCache.h"
 
 @interface EditViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -19,6 +20,8 @@
 @property (nonatomic,copy)NSString *nameStr;
 
 @property (nonatomic,copy)NSString *infoStr;
+
+@property (nonatomic,copy)NSString *timeStr;
 
 @property (nonatomic,strong)UIDatePicker *datePicker;
 
@@ -53,8 +56,24 @@
     self.rightBtn.hidden = NO;
 }
 - (void)rightBtnPress {
-    //保存数据
-    
+    if (self.timeStr.length>0 && self.nameStr.length>0 && self.infoStr.length>0  && self.datePicker.date) {
+        //保存数据
+           NSDictionary *dic = @{
+               @"time":self.timeStr,
+               @"name":self.nameStr,
+               @"des":self.infoStr,
+               @"timeFormat":self.datePicker.date,
+           };
+           RingsDataCache *cachedata = [[RingsDataCache alloc] init];
+           [cachedata saveCacheData:dic];
+           UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *sexMan = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               [self.navigationController popViewControllerAnimated:YES];
+            }];
+           [alert addAction:sexMan];
+           [self presentViewController:alert animated:YES completion:nil];
+    }
+
 }
 
 - (void)tapCancel {
@@ -111,6 +130,7 @@
     UITableViewCell *cell = [self.mainTableView cellForRowAtIndexPath:path];
     UILabel *label = [cell.contentView viewWithTag:1003];
     label.text = dateStr;
+    self.timeStr = dateStr;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

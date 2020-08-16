@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E0B0024E8D0AC003519D6 /* EditViewController.m */; };
+		B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E12DF24E90731003519D6 /* RingsDataCache.m */; };
 		B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D4FE24E8B4C300900A01 /* AppDelegate.m */; };
 		B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D50124E8B4C300900A01 /* SceneDelegate.m */; };
 		B084D50B24E8B4C300900A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B084D50924E8B4C300900A01 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		B05E0AFF24E8D0AC003519D6 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		B05E0B0024E8D0AC003519D6 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		B05E12DE24E90731003519D6 /* RingsDataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingsDataCache.h; sourceTree = "<group>"; };
+		B05E12DF24E90731003519D6 /* RingsDataCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingsDataCache.m; sourceTree = "<group>"; };
 		B084D4FA24E8B4C300900A01 /* Zmilk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmilk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B084D4FD24E8B4C300900A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B084D4FE24E8B4C300900A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 		B084D51F24E8B94700900A01 /* cacheData */ = {
 			isa = PBXGroup;
 			children = (
+				B05E12DE24E90731003519D6 /* RingsDataCache.h */,
+				B05E12DF24E90731003519D6 /* RingsDataCache.m */,
 			);
 			path = cacheData;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B084D52B24E8B99200900A01 /* SecondViewController.m in Sources */,
+				B05E12E024E90731003519D6 /* RingsDataCache.m in Sources */,
 				B084D51324E8B4C400900A01 /* main.m in Sources */,
 				B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */,
 				B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */,

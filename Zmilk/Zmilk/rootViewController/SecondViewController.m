@@ -33,8 +33,10 @@
 #pragma mark uitableviewdelegate
 //自定义section的头部
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
+         
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
     lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [headerView addSubview:lineView];
@@ -43,11 +45,11 @@
     }else{
         lineView.hidden = NO;
     }
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 150, 60)];
-    headerLabel.backgroundColor = [UIColor clearColor];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150, 55)];
+    headerLabel.backgroundColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headerLabel.textColor = [UIColor blackColor];
-    headerLabel.text = @"1111";
+    headerLabel.text = @"⏰吃药提醒";
     [headerView addSubview:headerLabel];
     
     return headerView;
@@ -58,7 +60,7 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

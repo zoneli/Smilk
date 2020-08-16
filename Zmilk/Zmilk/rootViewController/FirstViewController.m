@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "EditViewController.h"
+#import "RingsDataCache.h"
 
 @interface FirstViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -50,7 +51,8 @@
 
 //获取缓存列表
 - (void)getCacheData {
-    
+    RingsDataCache *cache = [[RingsDataCache alloc] init];
+    self.cacheDataArray = [cache getCacheArray];
     
 }
 
@@ -68,6 +70,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    headerView.backgroundColor = [UIColor whiteColor];
+
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
     lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [headerView addSubview:lineView];
@@ -76,11 +80,11 @@
     }else{
         lineView.hidden = NO;
     }
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 150, 60)];
-    headerLabel.backgroundColor = [UIColor clearColor];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 150, 55)];
+    headerLabel.backgroundColor = [UIColor whiteColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headerLabel.textColor = [UIColor blackColor];
-    headerLabel.text = @"1111";
+    headerLabel.text = @"⏰喝水提醒";
     [headerView addSubview:headerLabel];
     
     return headerView;
@@ -91,7 +95,7 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -110,8 +114,27 @@
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 0.5)];
         lineView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         [cell.contentView addSubview:lineView];
+        
+        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 100, 25)];
+        infoLabel.backgroundColor = [UIColor clearColor];
+        infoLabel.textColor = [UIColor blackColor];
+        infoLabel.tag = 1001;
+        [cell.contentView addSubview:infoLabel];
+        
+        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 200, 10, 180, 25)];
+        timeLabel.textAlignment = NSTextAlignmentRight;
+        timeLabel.backgroundColor = [UIColor clearColor];
+        timeLabel.textColor = [UIColor blackColor];
+        timeLabel.tag = 1003;
+        [cell.contentView addSubview:timeLabel];
+
+
     }
-    
+    NSDictionary *dic = [self.cacheDataArray objectAtIndex:indexPath.row];
+    UILabel *infoLabel = [cell.contentView viewWithTag:1001];
+    UILabel *timeLabel = [cell.contentView viewWithTag:1003];
+    infoLabel.text = dic[@"name"];
+    timeLabel.text = dic[@"time"];
     return cell;
     
 }
