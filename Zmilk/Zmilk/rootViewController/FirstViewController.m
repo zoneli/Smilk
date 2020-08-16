@@ -7,13 +7,14 @@
 //
 
 #import "FirstViewController.h"
+#import "EditViewController.h"
 
 @interface FirstViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)UITableView *mainTableView;
 
 @property (nonatomic,strong)NSMutableArray *cacheDataArray;
-
+@property (nonatomic,strong)UIButton *rightBtn;
 @end
 
 @implementation FirstViewController
@@ -21,8 +22,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.rightBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    self.rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    self.rightBtn.center = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, self.navigationController.navigationBar.center.y);
+    [self.rightBtn addTarget:self action:@selector(rightBtnPress) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:self.rightBtn];
+    
     [self createTableView];
     [self getCacheData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.rightBtn.hidden = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.rightBtn.hidden = NO;
+}
+
+- (void)rightBtnPress {
+    EditViewController *vc = [[EditViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //获取缓存列表
@@ -106,7 +129,6 @@
 }
 
 //执行删除操作
-
 - (void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
 
     NSLog(@"删除删除删除删除删除删除删除删除删除");

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E0B0024E8D0AC003519D6 /* EditViewController.m */; };
 		B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D4FE24E8B4C300900A01 /* AppDelegate.m */; };
 		B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B084D50124E8B4C300900A01 /* SceneDelegate.m */; };
 		B084D50B24E8B4C300900A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B084D50924E8B4C300900A01 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B05E0AFF24E8D0AC003519D6 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		B05E0B0024E8D0AC003519D6 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		B084D4FA24E8B4C300900A01 /* Zmilk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zmilk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B084D4FD24E8B4C300900A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B084D4FE24E8B4C300900A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B05E0AFE24E8D07D003519D6 /* popView */ = {
+			isa = PBXGroup;
+			children = (
+				B05E0AFF24E8D0AC003519D6 /* EditViewController.h */,
+				B05E0B0024E8D0AC003519D6 /* EditViewController.m */,
+			);
+			path = popView;
+			sourceTree = "<group>";
+		};
 		B084D4F124E8B4C300900A01 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +86,7 @@
 				B084D4FE24E8B4C300900A01 /* AppDelegate.m */,
 				B084D50024E8B4C300900A01 /* SceneDelegate.h */,
 				B084D50124E8B4C300900A01 /* SceneDelegate.m */,
+				B05E0AFE24E8D07D003519D6 /* popView */,
 				B084D52024E8B96A00900A01 /* rootViewController */,
 				B084D51F24E8B94700900A01 /* cacheData */,
 				B084D50924E8B4C300900A01 /* Main.storyboard */,
@@ -181,6 +194,7 @@
 				B084D51324E8B4C400900A01 /* main.m in Sources */,
 				B084D4FF24E8B4C300900A01 /* AppDelegate.m in Sources */,
 				B084D50224E8B4C300900A01 /* SceneDelegate.m in Sources */,
+				B05E0B0124E8D0AC003519D6 /* EditViewController.m in Sources */,
 				B084D52924E8B99200900A01 /* FirstViewController.m in Sources */,
 				B084D52C24E8B99200900A01 /* FourthViewController.m in Sources */,
 				B084D52A24E8B99200900A01 /* ThirdViewViewController.m in Sources */,
@@ -259,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -311,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
