@@ -116,17 +116,30 @@
 - (void)addLocationNotice:(NSDictionary *)dic {
     NSDate *date = dic[@"timeFormat"];
     if (date) {
-        UILocalNotification *notification=[[UILocalNotification alloc] init];
+    // 设置通知的提醒时间
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.timeZone = [NSTimeZone defaultTimeZone]; // 使用本地时区
         notification.fireDate = date;
-        notification.alertBody = dic[@"name"];
-        notification.alertTitle = dic[@"name"];
-        notification.repeatInterval=NSCalendarUnitSecond;
-        //设置本地通知的时区
-        notification.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-        notification.applicationIconBadgeNumber=1;
-        notification.userInfo=@{@"name":dic[@"name"]};
-        notification.soundName=UILocalNotificationDefaultSoundName;
+        // 设置重复间隔
+        notification.repeatInterval = kCFCalendarUnitDay;
+        
+        // 设置提醒的文字内容
+        notification.alertBody   = dic[@"name"];
+        notification.alertAction = NSLocalizedString(dic[@"name"], nil);
+        
+        // 通知提示音 使用默认的
+        notification.soundName= UILocalNotificationDefaultSoundName;
+        
+        // 设置应用程序右上角的提醒个数
+        notification.applicationIconBadgeNumber++;
+        
+        // 设定通知的userInfo，用来标识该通知
+        NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
+        [aUserInfo setObject:dic[@"name"] forKey:@"LocalNotificationID"];
+        notification.userInfo = aUserInfo;
+        // 将通知添加到系统中
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+
     }
     
 }
@@ -137,7 +150,7 @@
     NSLog(@"%ld",array.count);
     for (UILocalNotification * local in array) {
         NSDictionary *tempdic= local.userInfo;
-        if ([dic[@"name"] isEqual:tempdic[@"name"]]) {
+        if ([dic[@"LocalNotificationID"] isEqual:tempdic[@"LocalNotificationID"]]) {
             //删除指定的通知
             [app cancelLocalNotification:local];
         }

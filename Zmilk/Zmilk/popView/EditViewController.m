@@ -59,12 +59,11 @@
 - (void)rightBtnPress {
     if (self.isMedicine) {
         if (self.timeStr.length>0 && self.nameStr.length>0  && self.datePicker.date) {
-            NSDate *date2 = [self.datePicker.date dateByAddingTimeInterval:8 * 60 * 60];
             //保存数据
             NSDictionary *dic = @{
                 @"time":self.timeStr,
                 @"name":self.nameStr,
-                @"timeFormat":date2,
+                @"timeFormat":self.datePicker.date,
             };
             RingsDataCache *cachedata = [[RingsDataCache alloc] init];
             [cachedata saveMedicineCacheData:dic];
@@ -77,12 +76,11 @@
         }
     }else {
         if (self.timeStr.length>0 && self.nameStr.length>0 && self.datePicker.date) {
-            NSDate *date2 = [self.datePicker.date dateByAddingTimeInterval:8 * 60 * 60];
             //保存数据
             NSDictionary *dic = @{
                 @"time":self.timeStr,
                 @"name":self.nameStr,
-                @"timeFormat":date2,
+                @"timeFormat":self.datePicker.date,
             };
             RingsDataCache *cachedata = [[RingsDataCache alloc] init];
             [cachedata saveCacheData:dic];
@@ -192,7 +190,7 @@
         nameT.hidden = YES;
         [cell.contentView addSubview:nameT];
         
-        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 200, 10, 180, 25)];
+        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 210, 10, 180, 25)];
         timeLabel.textAlignment = NSTextAlignmentRight;
         timeLabel.backgroundColor = [UIColor clearColor];
         timeLabel.textColor = [UIColor blackColor];
@@ -201,7 +199,11 @@
         [cell.contentView addSubview:timeLabel];
         
     }
-    
+    if (indexPath.row==1) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     UILabel *infoLabel = [cell.contentView viewWithTag:1001];
     UITextField *nameT = [cell.contentView viewWithTag:1002];
     UILabel *timelabel = [cell.contentView viewWithTag:1003];
